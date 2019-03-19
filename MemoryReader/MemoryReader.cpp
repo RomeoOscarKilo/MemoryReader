@@ -3,8 +3,6 @@
 #include<string>
 #include <sstream>
 
-
-
 using namespace std;
 void errorGen(string errorType, int exitType);
 string convertToHex(int number);
@@ -36,7 +34,6 @@ string convertToHex(int number)
 	ss << hex << number;
 	return "0x" + ss.str();
 }
-
 
 void errorGen(string errorType, int exitType)
 {
