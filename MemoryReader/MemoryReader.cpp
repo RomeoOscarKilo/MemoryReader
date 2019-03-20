@@ -6,9 +6,9 @@
 using namespace std;
 void errorGen(string errorType, int exitType);
 string convertToHex(int number);
-int main()
+void main()
 {
-	cout << "Please enter  program" << endl;
+	cout << "Please enter  program:";
 	string programName;
 	getline(cin, programName);
 	HWND hwnd = FindWindowA(NULL, programName.c_str());
@@ -25,7 +25,19 @@ int main()
 	{
 		errorGen("Could not find process ID", -3); // -3 = failed procces ID
 	}
-	return 0;
+	unsigned long long count = 0xAABAA1;
+	int readResult;
+	while (count < 0xAABAA6)
+	{	
+		
+		ReadProcessMemory(handle, (PBYTE*)count, &readResult, 4 , 0);
+		cout << (PBYTE*)count << ": " << readResult << endl;
+		count++;
+	}
+	
+	cin >> programName;
+
+	exit(0);
 }
 
 string convertToHex(int number)
